@@ -1,5 +1,6 @@
 package io.github.shiryu.tournaments.tournament.objective;
 
+import io.github.shiryu.tournaments.tournament.Tournament;
 import io.github.shiryu.tournaments.tournament.objective.listener.ObjectiveListener;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
@@ -9,8 +10,12 @@ import java.util.List;
 public interface TournamentObjective{
 
     @NotNull
+    Tournament getTournament();
+
+    @NotNull
     List<ObjectiveListener> getListeners();
 
+    void activate();
 
     default void register(@NotNull final ObjectiveListener... listeners){
         if (listeners == null)

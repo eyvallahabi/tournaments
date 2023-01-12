@@ -1,4 +1,4 @@
-package io.github.shiryu.tournaments.player;
+package io.github.shiryu.tournaments.tournament;
 
 import io.github.shiryu.tournaments.tournament.Tournament;
 import lombok.Getter;
@@ -18,4 +18,10 @@ public class TournamentInfo {
     private boolean haveToLoad;
 
     private int objective;
+
+    public void addObjective(final int amount){
+        this.setObjective(
+                this.getObjective() + amount
+        );
+    }
 }
