@@ -24,7 +24,7 @@ public class TournamentsPlugin extends JavaPlugin {
         this.registerListeners(
                 new TournamentListener()
         );
-        
+
         this.registerManagers();
     }
 
