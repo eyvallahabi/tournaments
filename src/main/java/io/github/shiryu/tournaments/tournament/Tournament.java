@@ -1,10 +1,8 @@
 package io.github.shiryu.tournaments.tournament;
 
-import io.github.shiryu.tournaments.tournament.requirement.TournamentRequirement;
-import io.github.shiryu.tournaments.tournament.settings.TournamentSetting;
+import io.github.shiryu.tournaments.player.TournamentInfo;
 import io.github.shiryu.tournaments.tournament.settings.TournamentSettings;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +17,8 @@ public class Tournament {
     private final String id;
 
     private final TournamentSettings settings;
+
+    private final List<TournamentInfo> participation = new ArrayList<>();
 
     private boolean active;
 
@@ -35,6 +35,20 @@ public class Tournament {
         if (!this.settings.check(player))
             return;
 
+        if (this.isJoined(player))
+            return;
+
+        this.participation.add(
+                new TournamentInfo(
+                        player.getUniqueId(),
+                        this
+                )
+        );
+    }
+
+    public boolean isJoined(@NotNull final Player player){
+        return this.participation.stream()
+                .anyMatch(info -> info.getPlayer().equals(player.getUniqueId()));
     }
 
 }
