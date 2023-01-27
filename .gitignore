@@ -23,7 +23,8 @@
 hs_err_pid*
 replay_pid*
 
-# Intellij
-.idea/**
-target/**
+.idea
+target
+.gradle
+build
 *.iml
