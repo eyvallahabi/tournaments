@@ -1,12 +1,20 @@
 plugins {
     java
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "io.github.shiryu"
+version = "1.0"
 
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(18))
+    }
+}
+
+tasks{
+    build{
+        dependsOn(shadowJar)
     }
 }
 
@@ -21,48 +29,11 @@ repositories {
 dependencies{
     compileOnly("org.spigotmc:spigot-api:1.19.3-R0.1-SNAPSHOT")
 
+    implementation("com.github.cryptomorin:XSeries:9.2.0") { isTransitive = false }
+
     compileOnly("org.projectlombok:lombok:1.18.24")
     compileOnly("org.jetbrains:annotations:24.0.0")
 
     annotationProcessor("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.jetbrains:annotations:24.0.0")
-}
-
-tasks {
-    compileJava {
-        options.encoding = Charsets.UTF_8.name()
-    }
-
-    jar {
-        archiveClassifier.set(null as String?)
-        archiveBaseName.set(project.name)
-        archiveVersion.set(project.version.toString())
-    }
-
-    javadoc {
-        options.encoding = Charsets.UTF_8.name()
-        (options as StandardJavadocDocletOptions).tags("todo")
-    }
-
-    val javadocJar by creating(Jar::class) {
-        dependsOn("javadoc")
-        archiveClassifier.set("javadoc")
-        archiveBaseName.set(project.name)
-        archiveVersion.set(project.version.toString())
-        from(javadoc)
-    }
-
-    val sourcesJar by creating(Jar::class) {
-        dependsOn("classes")
-        archiveClassifier.set("sources")
-        archiveBaseName.set(project.name)
-        archiveVersion.set(project.version.toString())
-        from(sourceSets["main"].allSource)
-    }
-
-    build {
-        dependsOn(jar)
-        dependsOn(sourcesJar)
-        dependsOn(javadocJar)
-    }
 }
