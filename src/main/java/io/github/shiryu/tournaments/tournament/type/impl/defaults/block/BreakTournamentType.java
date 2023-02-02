@@ -16,10 +16,9 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class BreakBlockTournamentType implements TournamentType {
+public class BreakTournamentType implements TournamentType {
 
     private final List<XMaterial> whitelist;
-    private final int objective;
 
     private final List<Listener> listeners = new ArrayList<>();
 
