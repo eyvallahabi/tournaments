@@ -1,9 +1,9 @@
-package io.github.shiryu.tournaments.execute.impl;
+package io.github.shiryu.tournaments.environment.execute.impl;
 
 import io.github.shiryu.tournaments.environment.TournamentEnvironment;
 import io.github.shiryu.tournaments.environment.type.SenderType;
-import io.github.shiryu.tournaments.execute.Executable;
-import io.github.shiryu.tournaments.execute.annotation.Executation;
+import io.github.shiryu.tournaments.environment.execute.Executable;
+import io.github.shiryu.tournaments.environment.execute.annotation.Executation;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

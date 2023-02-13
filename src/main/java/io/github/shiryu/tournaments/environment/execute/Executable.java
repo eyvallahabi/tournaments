@@ -1,4 +1,4 @@
-package io.github.shiryu.tournaments.execute;
+package io.github.shiryu.tournaments.environment.execute;
 
 import io.github.shiryu.tournaments.environment.TournamentEnvironment;
 import org.jetbrains.annotations.NotNull;

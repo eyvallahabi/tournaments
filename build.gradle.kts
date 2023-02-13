@@ -31,7 +31,7 @@ dependencies{
     compileOnly("org.spigotmc:spigot-api:1.19.3-R0.1-SNAPSHOT")
 
     implementation("com.github.cryptomorin:XSeries:9.2.0") { isTransitive = false }
-    implementation("'com.github.stefvanschie.inventoryframework:IF:0.10.8")
+    implementation("com.github.stefvanschie.inventoryframework:IF:0.10.8") { isTransitive = false }
     implementation("dev.rollczi.litecommands:bukkit:2.8.3")
 
     compileOnly("org.projectlombok:lombok:1.18.24")

@@ -1,4 +1,4 @@
-package io.github.shiryu.tournaments.execute.annotation;
+package io.github.shiryu.tournaments.environment.control.annotation;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -9,8 +9,9 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Executation {
+public @interface Controllable {
 
     @NotNull
     String id();
+
 }

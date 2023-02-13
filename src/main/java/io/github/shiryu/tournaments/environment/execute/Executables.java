@@ -1,9 +1,9 @@
-package io.github.shiryu.tournaments.execute;
+package io.github.shiryu.tournaments.environment.execute;
 
 import com.google.common.collect.Lists;
 import io.github.shiryu.tournaments.environment.TournamentEnvironment;
 import io.github.shiryu.tournaments.environment.type.SenderType;
-import io.github.shiryu.tournaments.execute.annotation.Executation;
+import io.github.shiryu.tournaments.environment.execute.annotation.Executation;
 import lombok.experimental.UtilityClass;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
