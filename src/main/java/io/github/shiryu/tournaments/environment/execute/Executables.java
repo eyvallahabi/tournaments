@@ -30,6 +30,9 @@ public class Executables {
         if (executation == null)
             throw new IllegalStateException("Every executable needs an Executation annotation!");
 
+        if (EXECUTABLES.containsKey(executation.id()))
+            throw new IllegalStateException("This executation already registered!");
+
         EXECUTABLES.put(
                 executation.id(),
                 executable
