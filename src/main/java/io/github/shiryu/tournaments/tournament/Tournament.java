@@ -1,30 +1,27 @@
 package io.github.shiryu.tournaments.tournament;
 
 import com.google.common.collect.Lists;
+import io.github.shiryu.tournaments.environment.control.Controller;
 import io.github.shiryu.tournaments.tournament.info.TournamentInfo;
-import io.github.shiryu.tournaments.tournament.manager.TournamentManager;
-import io.github.shiryu.tournaments.tournament.manager.reward.RewardManager;
 import io.github.shiryu.tournaments.tournament.type.TournamentType;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Getter
 public class Tournament {
 
-    private final String id;
+    private final UUID uuid;
     private final TournamentType type;
 
     private TournamentSettings settings;
 
     private final List<TournamentInfo> info = Lists.newLinkedList();
 
-    public Tournament(@NotNull final String id, @NotNull final TournamentType type){
-        this.id = id;
+    public Tournament(@NotNull final TournamentType type){
+        this.uuid = UUID.randomUUID();
         this.type = type;
 
         this.settings = new TournamentSettings(this);

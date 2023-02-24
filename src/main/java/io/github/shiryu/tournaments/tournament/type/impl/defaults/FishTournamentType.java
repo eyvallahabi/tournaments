@@ -1,8 +1,8 @@
 package io.github.shiryu.tournaments.tournament.type.impl.defaults;
 
+import io.github.shiryu.tournaments.cache.TournamentCache;
 import io.github.shiryu.tournaments.listener.Listener;
 import io.github.shiryu.tournaments.listener.bukkit.BukkitListeners;
-import io.github.shiryu.tournaments.manager.TournamentManager;
 import io.github.shiryu.tournaments.tournament.Tournament;
 import io.github.shiryu.tournaments.tournament.type.TournamentType;
 import lombok.Getter;
@@ -14,12 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@RequiredArgsConstructor
 public class FishTournamentType implements TournamentType {
 
     private final List<Listener> listeners = new ArrayList<>();
 
-    public void enable(){
+    public FishTournamentType(){
         this.register(
                 BukkitListeners.newListener(PlayerFishEvent.class, event ->{
                     if (event.getState() != PlayerFishEvent.State.CAUGHT_FISH)
@@ -27,7 +26,7 @@ public class FishTournamentType implements TournamentType {
 
                     final Player player = event.getPlayer();
 
-                    final Tournament tournament = TournamentManager.find(player);
+                    final Tournament tournament = TournamentCache.tournamentByPlayer(player);
 
                     if (tournament == null)
                         return;

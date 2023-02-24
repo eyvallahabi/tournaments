@@ -4,7 +4,6 @@ import io.github.shiryu.tournaments.tournament.Tournament;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 

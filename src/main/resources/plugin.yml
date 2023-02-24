@@ -1,0 +1,7 @@
+name: tournaments
+version: 1.0
+author: shiryu
+api-version: 1.19
+main: io.github.shiryu.tournaments.TournamentPlugin
+
+commands:

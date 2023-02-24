@@ -1,9 +1,9 @@
 package io.github.shiryu.tournaments.tournament.type.impl.defaults;
 
 import com.cryptomorin.xseries.XMaterial;
+import io.github.shiryu.tournaments.cache.TournamentCache;
 import io.github.shiryu.tournaments.listener.Listener;
 import io.github.shiryu.tournaments.listener.bukkit.BukkitListeners;
-import io.github.shiryu.tournaments.manager.TournamentManager;
 import io.github.shiryu.tournaments.tournament.Tournament;
 import io.github.shiryu.tournaments.tournament.type.TournamentType;
 import lombok.Getter;
@@ -12,19 +12,21 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@RequiredArgsConstructor
 public class CraftTournamentType implements TournamentType {
 
     private final List<XMaterial> whitelist;
 
     private final List<Listener> listeners = new ArrayList<>();
 
-    public void enable(){
+    public CraftTournamentType(@NotNull final List<XMaterial> whitelist){
+        this.whitelist = whitelist;
+
         this.register(
                 BukkitListeners.newListener(CraftItemEvent.class, event ->{
                     final Player player = (Player) event.getWhoClicked();
@@ -53,7 +55,7 @@ public class CraftTournamentType implements TournamentType {
                         amount *= max;
                     }
 
-                    final Tournament tournament = TournamentManager.find(player);
+                    final Tournament tournament = TournamentCache.tournamentByPlayer(player);
 
                     if (tournament == null)
                         return;
@@ -62,4 +64,5 @@ public class CraftTournamentType implements TournamentType {
                 })
         );
     }
+
 }
