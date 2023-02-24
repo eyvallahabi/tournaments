@@ -5,18 +5,20 @@ import io.github.shiryu.tournaments.environment.control.Controller;
 import io.github.shiryu.tournaments.tournament.info.TournamentInfo;
 import io.github.shiryu.tournaments.tournament.type.TournamentType;
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 @Getter
+@Setter
 public class Tournament {
 
     private final UUID uuid;
     private final TournamentType type;
 
-    private TournamentSettings settings;
+    private final TournamentSettings settings;
 
     private final List<TournamentInfo> info = Lists.newLinkedList();
 

@@ -1,16 +1,18 @@
 package io.github.shiryu.tournaments.database;
 
-import io.github.shiryu.spider.storage.Storage;
 import io.github.shiryu.spider.storage.sql.SQLConnection;
 import io.github.shiryu.spider.storage.sql.SQLStorage;
 import io.github.shiryu.spider.storage.sql.credentials.MySQLCredentials;
 import io.github.shiryu.spider.storage.sql.credentials.SQLiteCredentials;
 import io.github.shiryu.spider.storage.sql.type.MySQLConnection;
 import io.github.shiryu.spider.storage.sql.type.SQLiteConnection;
+import io.github.shiryu.spider.util.functional.StaticEntry;
 import io.github.shiryu.tournaments.TournamentPlugin;
-import lombok.Data;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.AbstractMap;
+import java.util.UUID;
 
 @Getter
 public class TournamentDatabase {
@@ -27,6 +29,19 @@ public class TournamentDatabase {
 
     public void connect(){
         this.storage.connect();
+
+        this.storage.getExecutor()
+                .createTable(
+                        "tournaments",
+                        new StaticEntry<>(
+                                "UUID",
+                                "VARCHAR(255)"
+                        ),
+                        new StaticEntry<>(
+                                "TOURNAMENT",
+                                "TEXT"
+                        )
+                );
     }
 
     private SQLConnection create(@NotNull final DatabaseType type){

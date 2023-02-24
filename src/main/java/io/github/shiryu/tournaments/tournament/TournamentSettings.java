@@ -12,5 +12,8 @@ public class TournamentSettings {
 
     private final Tournament tournament;
 
+    private boolean active;
 
+    private long start;
+    private long finish;
 }
