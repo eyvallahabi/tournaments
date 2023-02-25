@@ -2,27 +2,22 @@ package io.github.shiryu.tournaments.tournament.type.impl.defaults;
 
 import com.cryptomorin.xseries.XMaterial;
 import io.github.shiryu.tournaments.cache.TournamentCache;
-import io.github.shiryu.tournaments.listener.Listener;
 import io.github.shiryu.tournaments.listener.bukkit.BukkitListeners;
 import io.github.shiryu.tournaments.tournament.Tournament;
 import io.github.shiryu.tournaments.tournament.type.TournamentType;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class CraftTournamentType implements TournamentType {
+public class CraftTournamentType extends TournamentType {
 
     private final List<XMaterial> whitelist;
-
-    private final List<Listener> listeners = new ArrayList<>();
 
     public CraftTournamentType(@NotNull final List<XMaterial> whitelist){
         this.whitelist = whitelist;

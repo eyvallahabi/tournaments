@@ -1,22 +1,13 @@
 package io.github.shiryu.tournaments.tournament.type.impl.defaults;
 
 import io.github.shiryu.tournaments.cache.TournamentCache;
-import io.github.shiryu.tournaments.listener.Listener;
 import io.github.shiryu.tournaments.listener.bukkit.BukkitListeners;
 import io.github.shiryu.tournaments.tournament.Tournament;
 import io.github.shiryu.tournaments.tournament.type.TournamentType;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerFishEvent;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Getter
-public class FishTournamentType implements TournamentType {
-
-    private final List<Listener> listeners = new ArrayList<>();
+public class FishTournamentType extends TournamentType {
 
     public FishTournamentType(){
         this.register(

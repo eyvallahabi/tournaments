@@ -16,11 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class PlaceTournamentType implements TournamentType {
+public class PlaceTournamentType extends TournamentType {
 
     private final List<XMaterial> whitelist;
-
-    private final List<Listener> listeners = new ArrayList<>();
 
     public PlaceTournamentType(@NotNull final List<XMaterial> whitelist) {
         this.whitelist = whitelist;

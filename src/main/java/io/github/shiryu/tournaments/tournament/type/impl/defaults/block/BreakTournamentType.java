@@ -16,11 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class BreakTournamentType implements TournamentType {
+public class BreakTournamentType extends TournamentType {
 
     private final List<XMaterial> whitelist;
 
-    private final List<Listener> listeners = new ArrayList<>();
 
     public BreakTournamentType(@NotNull final List<XMaterial> whitelist){
         this.whitelist = whitelist;
