@@ -1,11 +1,12 @@
 package io.github.shiryu.tournaments.tournament;
 
-import io.github.shiryu.tournaments.environment.control.Controller;
-import io.github.shiryu.tournaments.environment.execute.Executable;
-import io.github.shiryu.tournaments.tournament.Tournament;
+import io.github.shiryu.tournaments.tournament.requirement.Requirement;
+import io.github.shiryu.tournaments.tournament.reward.Reward;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,13 +18,15 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class TournamentSettings {
 
-    //TODO REWARD & REQUİREMENTS
-
     private final Tournament tournament;
 
     private boolean autoJoin;
 
     private final List<String> disabledWorlds = new ArrayList<>();
+
+    private final List<Requirement> requirements = new ArrayList<>();
+
+    private final Map<Integer, List<Reward>> rewards = new HashMap<>();
 
     private boolean active;
 

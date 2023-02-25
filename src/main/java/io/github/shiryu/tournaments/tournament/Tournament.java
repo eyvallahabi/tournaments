@@ -36,6 +36,17 @@ public class Tournament {
         this.settings = new TournamentSettings(this);
     }
 
+    public void join(@NotNull final Player player){
+        if (this.find(player).isPresent())
+            return;
+
+        this.info.add(
+                new TournamentInfo(
+                        player.getUniqueId()
+                )
+        );
+    }
+
     public void start(final long finish){
         this.settings.setStart(System.currentTimeMillis());
         this.settings.setFinish(System.currentTimeMillis() + finish);

@@ -1,4 +1,4 @@
-package io.github.shiryu.tournaments.environment.execute.annotation;
+package io.github.shiryu.tournaments.tournament.reward.annotation;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Executation {
+public @interface RewardInfo {
 
     @NotNull
     String id();
