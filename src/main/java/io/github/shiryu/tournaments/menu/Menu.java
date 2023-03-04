@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
+import com.github.stefvanschie.inventoryframework.pane.StaticPane;
 import io.github.shiryu.spider.util.Colored;
 import io.github.shiryu.spider.util.item.ItemBuilder;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -34,6 +35,17 @@ public class Menu extends ChestGui {
 
     public void fill(@NotNull final Player player){
 
+    }
+
+    public void addItem(@NotNull final StaticPane pane, @NotNull final String name, @NotNull final Consumer<InventoryClickEvent> consumer){
+        pane.addItem(
+                create(
+                        name,
+                        consumer
+                ),
+                getX(name),
+                getY(name)
+        );
     }
 
     public int getX(@NotNull final String path){

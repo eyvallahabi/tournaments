@@ -42,17 +42,6 @@ public class ParentMenu extends Menu {
         this.addAdminPane(player);
     }
 
-    private void addItem(@NotNull final StaticPane pane, @NotNull final String name, @NotNull final Consumer<InventoryClickEvent> consumer){
-        pane.addItem(
-                create(
-                        name,
-                        consumer
-                ),
-                getX(name),
-                getY(name)
-        );
-    }
-
     private void addAdminPane(@NotNull final Player player){
         final StaticPane admin = new StaticPane(getX("admin"), getY("admin"), 1, 1);
 
