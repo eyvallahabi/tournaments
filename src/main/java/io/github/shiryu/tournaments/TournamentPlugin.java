@@ -8,10 +8,14 @@ import io.github.shiryu.tournaments.commands.TournamentsCommand;
 import io.github.shiryu.tournaments.database.TournamentDatabase;
 import io.github.shiryu.tournaments.files.TournamentFiles;
 import io.github.shiryu.tournaments.menu.impl.ParentMenu;
+import io.github.shiryu.tournaments.util.FileLoader;
 import lombok.Getter;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
 
 @Getter
 public class TournamentPlugin extends JavaPlugin {
@@ -29,7 +33,13 @@ public class TournamentPlugin extends JavaPlugin {
         instance = this;
 
         this.files = new TournamentFiles(this);
-        this.loadMenuFiles();
+        this.loadMenuFiles(
+                "parent",
+                "ongoing",
+                "stats",
+                "settings",
+                "admin"
+        );
 
         this.database = new TournamentDatabase(this);
         this.database.connect();
@@ -37,8 +47,9 @@ public class TournamentPlugin extends JavaPlugin {
         this.registerCommands();
     }
 
-    private void loadMenuFiles(){
-        new ParentMenu();
+    private void loadMenuFiles(@NotNull final String... files){
+        Arrays.stream(files)
+                .forEach(file -> FileLoader.loadMenu(file + ".yml"));
     }
 
     private void registerCommands(){
