@@ -44,6 +44,11 @@ dependencies{
     compileOnly("org.projectlombok:lombok:1.18.24")
     compileOnly("org.jetbrains:annotations:24.0.0")
 
+    compileOnly("com.github.ben-manes.caffeine:caffeine:3.1.3")
+
+    implementation("com.github.stefvanschie.inventoryframework:IF:0.10.8")
+    implementation("dev.rollczi.litecommands:bukkit:2.8.4")
+
     compileOnly("com.github.MilkBowl:VaultAPI:1.7")
     compileOnly("com.badbones69.crazyenvoys", "crazyenvoys-api", "1.4.20.1")
     compileOnly("com.badbones69.crazycrates", "crazycrates-api", "1.11.14")

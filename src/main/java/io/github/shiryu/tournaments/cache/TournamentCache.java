@@ -19,7 +19,7 @@ public class TournamentCache {
 
     private final Cache<UUID, Optional<Tournament>> TOURNAMENTS = Caffeine.newBuilder()
             .maximumSize(100)
-            .refreshAfterWrite(Duration.ofMinutes(5))
+            .expireAfterWrite(Duration.ofMinutes(5))
             .build(TournamentCache::load);
 
     @Nullable

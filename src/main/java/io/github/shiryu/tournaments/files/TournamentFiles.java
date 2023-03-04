@@ -14,6 +14,7 @@ public class TournamentFiles {
 
     private final TournamentPlugin plugin;
 
+
     private final SettingsFile settings;
 
     public TournamentFiles(@NotNull final TournamentPlugin plugin) {
