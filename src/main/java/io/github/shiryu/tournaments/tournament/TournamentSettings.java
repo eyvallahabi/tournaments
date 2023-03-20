@@ -30,6 +30,8 @@ public class TournamentSettings {
 
     private boolean active;
 
+    private boolean repeat;
+
     private long start;
     private long finish;
 }

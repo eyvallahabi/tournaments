@@ -2,13 +2,14 @@ package io.github.shiryu.tournaments.tournament.reward.impl;
 
 import io.github.shiryu.tournaments.tournament.requirement.annotation.RequirementInfo;
 import io.github.shiryu.tournaments.tournament.reward.Reward;
+import io.github.shiryu.tournaments.tournament.reward.annotation.RewardInfo;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@RequirementInfo(id = "command")
+@RewardInfo(id = "command")
 public class CommandReward implements Reward {
 
     @Override

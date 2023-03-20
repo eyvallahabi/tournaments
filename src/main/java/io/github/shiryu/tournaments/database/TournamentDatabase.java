@@ -24,7 +24,8 @@ public class TournamentDatabase {
     public TournamentDatabase(@NotNull final TournamentPlugin plugin){
         this.plugin = plugin;
 
-        this.storage = new SQLStorage(this.create(plugin.getFiles().getSettings().DATABASE_TYPE));
+        this.storage = new SQLStorage(this.create(DatabaseType.SQLITE));
+       // this.storage = new SQLStorage(this.create(plugin.getFiles().getSettings().DATABASE_TYPE));
     }
 
     public void connect(){
@@ -48,7 +49,7 @@ public class TournamentDatabase {
         SQLConnection connection = null;
 
         switch (type){
-            case MYSQL ->{
+            /*case MYSQL ->{
                 connection = new MySQLConnection(
                         new MySQLCredentials(
                                 plugin.getFiles().getSettings().CREDENTIAL_HOST,
@@ -58,7 +59,7 @@ public class TournamentDatabase {
                                 plugin.getFiles().getSettings().CREDENTIAL_PORT
                         )
                 );
-            }
+            }*/
             case SQLITE -> {
                 connection = new SQLiteConnection(
                         new SQLiteCredentials(

@@ -22,7 +22,7 @@ public class TournamentControlTask extends BukkitRunnable {
 
     public void start(){
         this.runTaskTimer(
-                TournamentPlugin.getInstance(),
+                TournamentPlugin.getPlugin(),
                 100L,
                 20L
         );

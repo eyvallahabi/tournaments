@@ -55,7 +55,7 @@ public class Tournament {
     }
 
     public void stop(){
-
+        this.controlTask.cancel();
     }
 
     @NotNull

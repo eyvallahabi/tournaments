@@ -45,7 +45,7 @@ public class TournamentCache {
 
     @NotNull
     private Optional<Tournament> load(@NotNull final UUID uuid){
-        final SQLExecutor executor = TournamentPlugin.getInstance().getDatabase().getStorage().getExecutor();
+        final SQLExecutor executor = TournamentPlugin.getPlugin().getDatabase().getStorage().getExecutor();
 
         if (executor.exists("tournaments", "UUID", uuid)){
             final Gson gson = new Gson();
