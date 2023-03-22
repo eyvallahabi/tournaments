@@ -11,14 +11,13 @@ import io.github.shiryu.spider.storage.sql.type.SQLiteConnection;
 import io.github.shiryu.spider.util.functional.StaticEntry;
 import io.github.shiryu.tournaments.TournamentsPlugin;
 import io.github.shiryu.tournaments.configuration.Configs;
-import io.github.shiryu.tournaments.model.Tournament;
+import io.github.shiryu.tournaments.player.TournamentPlayer;
 import io.github.shiryu.tournaments.storage.TournamentDatabase;
 import io.github.shiryu.tournaments.storage.type.StorageType;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.units.qual.N;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -68,35 +67,35 @@ public class SQLDatabase extends TournamentDatabase {
                                 "VARCHAR(255)"
                         ),
                         new StaticEntry<>(
-                                "TOURNAMENT",
+                                "INFOS",
                                 "TEXT"
                         )
                 );
     }
 
     @Override
-    public @NotNull Optional<Tournament> load(@NotNull UUID uuid) {
+    public @NotNull Optional<TournamentPlayer> load(@NotNull UUID uuid) {
         final SQLExecutor executor = this.storage.getExecutor();
 
         if (executor.exists("tournaments", "UUID", uuid)){
             final Gson gson = new Gson();
 
-            Tournament tournament;
+            final TournamentPlayer player = new TournamentPlayer(uuid);
 
             try{
-                tournament = gson.fromJson(
-                        (String) executor.get("tournament", "TOURNAMENT", "UUID", "=", uuid),
-                        Tournament.class
+                player.setInfos(
+                        gson.fromJson(
+                                (String) executor.get("tournaments", "INFOS", "UUID", "=", uuid),
+                                List.class
+                        )
                 );
-            }catch (final Exception exception) {
+            }catch (final Exception exception){
                 return Optional.empty();
             }
 
-            if (tournament == null)
-                Optional.empty();
-
-            return Optional.of(tournament);
+            return Optional.of(player);
         }
 
-        return Optional.empty();    }
+        return Optional.empty();
+    }
 }

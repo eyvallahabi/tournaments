@@ -1,4 +1,4 @@
-package io.github.shiryu.tournaments.model;
+package io.github.shiryu.tournaments.player;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

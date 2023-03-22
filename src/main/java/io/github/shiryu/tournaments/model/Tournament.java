@@ -1,5 +1,8 @@
 package io.github.shiryu.tournaments.model;
 
+import io.github.shiryu.tournaments.model.type.TournamentType;
+import io.github.shiryu.tournaments.player.TournamentInfo;
+import io.github.shiryu.tournaments.player.TournamentPlayer;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
@@ -11,22 +14,28 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Getter
-@RequiredArgsConstructor
 public class Tournament {
 
+    private final TournamentType type;
     private final UUID uuid;
 
-    private final List<TournamentInfo> info = new ArrayList<>();
+    public Tournament(@NotNull final TournamentType type){
+        this.type = type;
+
+        this.uuid = UUID.randomUUID();
+    }
+
+    private final List<TournamentPlayer> players = new ArrayList<>();
 
     @NotNull
-    public Optional<TournamentInfo> find(@NotNull final UUID uuid){
-        return this.info.stream()
-                .filter(info -> info.getUuid().equals(uuid))
+    public Optional<TournamentPlayer> find(@NotNull final UUID uuid){
+        return this.players.stream()
+                .filter(player -> player.getUuid().equals(uuid))
                 .findFirst();
     }
 
     @NotNull
-    public Optional<TournamentInfo> find(@NotNull final Player player){
+    public Optional<TournamentPlayer> find(@NotNull final Player player){
         return this.find(
                 player.getUniqueId()
         );

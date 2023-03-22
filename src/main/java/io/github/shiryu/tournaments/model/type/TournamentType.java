@@ -10,7 +10,7 @@ public class TournamentType implements Listener {
 
     public void update(@NotNull final Tournament tournament, @NotNull final Player player){
         tournament.find(player)
-                .ifPresent(info -> info.increase());
+                .ifPresent(account -> account.update(tournament));
     }
 
     public void findAndUpdate(@NotNull final Player player){
